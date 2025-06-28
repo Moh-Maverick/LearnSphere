@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "../lib/supabaseClient";
 import ReactMarkdown from "react-markdown";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "https://learnsphere-q6ko.onrender.com";
 
 const SubjectDetail = ({ subject, onBack }) => {
     const [chatMessage, setChatMessage] = useState("");
