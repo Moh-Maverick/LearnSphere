@@ -1,0 +1,348 @@
+@import "tailwindcss";
+
+/* Space-themed design system */
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 262 83% 70%;
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 240 10% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 10% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 262 83% 70%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 262 83% 70%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Space theme colors */
+  --color-space-deep: #0f0a1a;
+  --color-space-dark: #1a1035;
+  --color-space-medium: #2d1b69;
+  --color-space-light: #4c3494;
+  --color-space-accent: #8b5cf6;
+  --color-space-bright: #c084fc;
+  --color-space-star: #fbbf24;
+  --color-space-nebula: #ec4899;
+  --color-space-cosmic: #06b6d4;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-space-deep text-foreground;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.15) 0%, transparent 50%);
+  }
+
+  /* Animated stars background */
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  /* Cosmic particles animation */
+  .cosmic-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .cosmic-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #8b5cf6, #c084fc, #fbbf24);
+    border-radius: 50%;
+    animation: cosmic-float 15s ease-in-out infinite;
+    opacity: 0.7;
+  }
+
+  /* Nebula background effects */
+  .nebula-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+  }
+
+  .nebula-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+  }
+
+  .nebula-2 {
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
+    bottom: -20%;
+    right: -20%;
+  }
+
+  .nebula-3 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, transparent 70%);
+    top: 50%;
+    right: 10%;
+  }
+}
+
+@layer components {
+  .planet-card {
+    @apply bg-gradient-to-br from-space-medium to-space-dark border border-space-light/20 rounded-3xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-space-accent/20 cursor-pointer;
+  }
+
+  .cosmic-button {
+    @apply bg-gradient-to-r from-space-accent to-space-bright text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-space-accent/30;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+}
+
+/* Enhanced animations */
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes cosmic-float {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+
+  25% {
+    transform: translateY(-100px) translateX(50px) rotate(90deg);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translateY(-200px) translateX(-30px) rotate(180deg);
+    opacity: 0.5;
+  }
+
+  75% {
+    transform: translateY(-150px) translateX(-80px) rotate(270deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes nebula-float {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-50px) translateX(30px) scale(1.1);
+  }
+}
+
+@keyframes nebula-float-delayed {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(40px) translateX(-20px) scale(0.9);
+  }
+}
+
+@keyframes nebula-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce-gentle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-nebula-float {
+  animation: nebula-float 20s ease-in-out infinite;
+}
+
+.animate-nebula-float-delayed {
+  animation: nebula-float-delayed 25s ease-in-out infinite;
+}
+
+.animate-nebula-pulse {
+  animation: nebula-pulse 15s ease-in-out infinite;
+}
+
+.animate-text-shimmer {
+  background-size: 200% auto;
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 3s ease-in-out infinite;
+}
